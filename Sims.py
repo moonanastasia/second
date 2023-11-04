@@ -79,7 +79,7 @@ class Human:
         self.home.mess = 0
 
     def to_repair(self):
-        self.car.strength += 100
+        self.car.strength += 10
         self.money -= 50
 
     def days_indexes(self, day):
