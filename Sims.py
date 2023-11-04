@@ -33,7 +33,7 @@ class Human:
             self.satiety = 100
             return
         self.satiety += 5
-        self.home.food -= 5
+        self.home.food -= 15
 
     def work(self):
         if self.car.drive():
@@ -48,7 +48,7 @@ class Human:
                 return
         self.money += self.job.salary
         self.gladness -= self.job.gladness_less
-        self.satiety -= 4
+        self.satiety -= 40
 
     def shopping(self, manage):
         if self.car.drive():
@@ -104,7 +104,7 @@ class Human:
             return False
         if self.satiety < 0:
             print("Dead....")
-        if self.money < -500:
+        if self.money < -100:
             print("Bankrupt....")
             return False
 
@@ -121,9 +121,10 @@ class Human:
             self.get_job()
             print(f"I don't have a job, I'm going to get a job {self.job.job} with salary {self.job.salary}")
         self.days_indexes(day)
+        self.satiety -= 5
 
-        dice = random.randint(1, 4)
-        if self.satiety < 20:
+        dice = random.randint(1, 5)
+        if self.satiety <= 100:
             print("I'll go eat!")
             self.eat()
         if self.gladness < 20:
@@ -133,7 +134,7 @@ class Human:
             else:
                 print("Let's chill")
                 self.chill()
-        elif self.money < 0:
+        elif self.money < 50:
             print('Start working!')
             self.work()
         elif self.car.strength < 15:
@@ -151,7 +152,9 @@ class Human:
         elif dice == 4:
             print("time shopping!")
             self.shopping(manage='delecacies')
-
+        elif dice == 5:
+            print("Time to eat")
+            self.eat()
 
 
 
