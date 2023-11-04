@@ -37,6 +37,7 @@ class Human:
 
     def work(self):
         if self.car.drive():
+            self.to_repair()
             pass
         else:
             if self.car.fuel < 20:
@@ -70,13 +71,16 @@ class Human:
             self.satiety += 2
 
     def chill(self):
-        pass
+        self.gladness += 10
+        self.home.mess -= 5
 
     def clean_home(self):
-        pass
+        self.gladness -= 5
+        self.home.mess = 0
 
     def to_repair(self):
-        pass
+        self.car.strength += 100
+        self.money -= 50
 
     def days_indexes(self, day):
         day = f"Today the {day} of {self.name}'s life"
@@ -95,7 +99,7 @@ class Human:
         print(f"Strength - {self.car.strength}")
 
     def is_alive(self):
-        if self.gladness <0:
+        if self.gladness < 0:
             print('Depression')
             return False
         if self.satiety < 0:
